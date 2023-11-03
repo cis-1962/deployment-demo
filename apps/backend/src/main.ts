@@ -13,6 +13,7 @@ app.use(morgan('dev'))
 app.use(cors({ origin: 'http://localhost:5173' }))
 
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/test"
+const PORT = process.env.PORT || 3000
 
 mongoose.connect(MONGO_URI)
 
@@ -22,6 +23,6 @@ app.get('/api', (req, res) => {
 
 app.use('/api/boxes', boxRouter)
 
-app.listen(3000, () => {
-    console.log('Server running on port 3000')
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
 })
